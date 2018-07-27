@@ -529,7 +529,7 @@ def chat(chatwith_id):
             if nowuser.user1== current_user.id:
 
                 user=SponsorUser.query.filter_by(user_id=nowuser.user2).first()
-                messages=[[sponsorUser.sponsor_name]]
+                messages=[[user.sponsor_name]]
                 if form.validate_on_submit() :
                     conversation= Conversation(text = form.text.data, conversing_id= nowuser.id, sender_id= current_user.id  )
                     db.session.add(conversation)
@@ -540,7 +540,7 @@ def chat(chatwith_id):
 
             elif  nowuser.user2==current_user.id:
                 user=SponsorUser.query.filter_by(user_id=nowuser.user2).first()
-                messages=[[sponsorUser.sponsor_name]]
+                messages=[[user.sponsor_name]]
                 if form.validate_on_submit() :
                     conversation= Conversation(text = form.text.data, conversing_id= nowuser.id, sender_id= current_user.id  )
                     db.session.add(conversation)
@@ -552,7 +552,7 @@ def chat(chatwith_id):
         elif current_user.type=='S':
             if nowuser.user1== current_user.id :
                 user=PartyUser.query.filter_by(user_id=chatwith_id).first()
-                messages=[[partyUser.party_name]]
+                messages=[[user.party_name]]
                 if form.validate_on_submit() :
                     conversation= Conversation(text = form.text.data, conversing_id= nowuser.id, sender_id= current_user.id )
                     db.session.add(conversation)
@@ -563,7 +563,7 @@ def chat(chatwith_id):
 
             elif nowuser.user2==current_user.id :
                 user=PartyUser.query.filter_by(user_id=chatwith_id).first()
-                messages=[[partyUser.party_name]]
+                messages=[[user.party_name]]
                 if form.validate_on_submit() :
                     conversation= Conversation(text = form.text.data, conversing_id= nowuser.id, sender_id= current_user.id  )
                     db.session.add(conversation)
